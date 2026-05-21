@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>시장 동향 보고 (실무자용) 2026-05-21</title>
+<style>
+@page { size: A4; margin: 12mm 14mm; }
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, sans-serif;
+  color: #2C2C2A;
+  background: #FAFAF8;
+  -webkit-font-smoothing: antialiased;
+  font-size: 11.5px;
+  line-height: 1.55;
+}
+.page {
+  width: 210mm;
+  min-height: 297mm;
+  padding: 12mm 14mm;
+  margin: 20px auto;
+  background: #FFFFFF;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.page-header {
+  border-bottom: 1.5px solid #444441;
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+}
+.header-tag {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: #888780;
+  margin: 0;
+  text-transform: uppercase;
+}
+.doc-title {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #5F5E5A;
+  margin: 6px 0 2px;
+  letter-spacing: 0.04em;
+}
+.report-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #2C2C2A;
+  margin: 2px 0 6px;
+}
+.meta-table {
+  font-size: 10.5px;
+  color: #5F5E5A;
+  border-collapse: collapse;
+}
+.meta-table td { padding: 1px 10px 1px 0; }
+.meta-table td b { color: #2C2C2A; font-weight: 600; }
+
+.section { margin-bottom: 12px; }
+.section-label {
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  color: #5F5E5A;
+  font-weight: 600;
+  border-bottom: 0.5px solid #D3D1C7;
+  padding-bottom: 3px;
+  margin: 0 0 7px;
+}
+.body-text {
+  margin: 0;
+  font-size: 11.5px;
+  line-height: 1.65;
+  color: #2C2C2A;
+}
+.body-text b { font-weight: 700; }
+.body-text .keyword { font-weight: 600; }
+
+table.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+.report-table thead th {
+  background: #F1EFE8;
+  text-align: left;
+  padding: 5px 7px;
+  font-weight: 600;
+  color: #444441;
+  border-bottom: 0.5px solid #B4B2A9;
+  font-size: 10.5px;
+}
+.report-table tbody td {
+  padding: 5px 7px;
+  vertical-align: top;
+  border-bottom: 0.5px solid #E5E3DA;
+  line-height: 1.5;
+}
+.report-table tbody tr:last-child td { border-bottom: none; }
+.report-table td b { font-weight: 700; }
+.report-table td .keyword { font-weight: 600; }
+
+.eval-center { text-align: center; width: 56px; }
+.eval-focus { color: #BA7517; font-weight: 700; }
+.eval-watch { color: #5F5E5A; font-weight: 600; }
+.eval-hold { color: #888780; font-weight: 500; }
+
+.legend {
+  font-size: 9.5px;
+  color: #888780;
+  margin: 6px 0 0;
+  line-height: 1.5;
+}
+
+.case-block {
+  margin-bottom: 10px;
+}
+.case-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #2C2C2A;
+  margin: 0 0 6px;
+}
+.subsection-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: #5F5E5A;
+  margin: 5px 0 2px;
+}
+ul.observation-list {
+  margin: 2px 0 6px;
+  padding-left: 16px;
+  font-size: 11px;
+  line-height: 1.6;
+  color: #2C2C2A;
+}
+ul.observation-list li { margin-bottom: 2px; }
+ul.observation-list b { font-weight: 700; }
+ul.observation-list .keyword { font-weight: 600; }
+.interp-text {
+  margin: 2px 0 6px;
+  font-size: 11px;
+  line-height: 1.6;
+  color: #2C2C2A;
+}
+.interp-text b { font-weight: 700; }
+.interp-text .keyword { font-weight: 600; }
+
+.col-rec { width: auto; }
+.col-bg { width: 130px; }
+.col-owner { width: 100px; }
+.col-deadline { width: 66px; }
+.col-kpi { width: 110px; }
+.deadline { color: #BA7517; font-weight: 700; }
+
+.trend-block {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  row-gap: 5px;
+  column-gap: 12px;
+  font-size: 11px;
+  line-height: 1.55;
+}
+.trend-label {
+  font-weight: 600;
+  font-size: 10.5px;
+}
+.trend-recur { color: #854F0B; }
+.trend-new, .trend-strong { color: #5F5E5A; }
+.trend-block p { margin: 0; }
+.trend-block b { font-weight: 700; }
+
+.opinion-box {
+  background: #F1EFE8;
+  padding: 9px 11px;
+  border-radius: 3px;
+  font-size: 11px;
+  color: #2C2C2A;
+  line-height: 1.65;
+  margin: 0;
+}
+.opinion-box b { font-weight: 700; }
+.opinion-box .keyword { font-weight: 600; }
+
+.bottom-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.bottom-row ul {
+  margin: 4px 0 0;
+  padding-left: 16px;
+  font-size: 10.5px;
+  line-height: 1.6;
+  color: #5F5E5A;
+}
+.bottom-row ol {
+  margin: 4px 0 0;
+  padding-left: 20px;
+  font-size: 10px;
+  line-height: 1.6;
+  color: #5F5E5A;
+}
+
+.footer {
+  margin-top: 14px;
+  padding-top: 8px;
+  border-top: 0.5px solid #D3D1C7;
+  text-align: center;
+  font-size: 9.5px;
+  color: #888780;
+  letter-spacing: 0.04em;
+}
+@media print {
+  body { background: #FFFFFF; margin: 0; }
+  .page { box-shadow: none; margin: 0; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="page-header">
+    <p class="header-tag">대외비 · 실무 보고용</p>
+    <p class="doc-title">「시장 동향 보고」</p>
+    <p class="report-title">한화손해보험 주간 시장 동향 보고</p>
+    <table class="meta-table">
+      <tr>
+        <td>보고 기간 &nbsp;<b>2026-05-14 ~ 2026-05-21</b></td>
+        <td>보고 일자 &nbsp;<b>2026-05-21</b></td>
+        <td>작성 &nbsp;<b>전략기획</b></td>
+        <td>신뢰도 &nbsp;<b>보통</b> (1차 6건 / 2차 6건)</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <p class="section-label">I. 요약</p>
+    <p class="body-text">
+      <b>2026-05-06</b> <span class="keyword">5세대 실손보험</span> 정식 출시 및 4세대 신규 가입 종료. 자동차보험 5사 평균 손해율 <b>88.5%</b> 기록(YoY <b>+6.7%p</b>), 경상환자 <span class="keyword">8주룰</span> 도입 지연 및 차량 5부제 특약 시행으로 수익성 하방 압력 가중. 본사 1분기 신계약 <span class="keyword">CSM</span> <b>3,024억원</b>으로 분기 최대 실적 갱신, 보장성 중심 체질 개선 진전. 다만 1분기 보험손익 <b>798억원</b>(YoY <b>-41%</b>), 당기순익 <b>989억원</b>(YoY <b>-30.7%</b>) 기록. 단기적으로 자동차보험 손익 방어와 5세대 실손 전환 대응이 시급 과제로 판단됨.
+    </p>
+  </div>
+
+  <div class="section">
+    <p class="section-label">II. 한화손보 영향 평가</p>
+    <table class="report-table">
+      <thead>
+        <tr>
+          <th style="width:140px;">의제</th>
+          <th class="eval-center">평가</th>
+          <th>핵심 근거</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="keyword">여성·웰니스 확장</span></td>
+          <td class="eval-center"><span class="eval-focus">중점</span></td>
+          <td><span class="keyword">시그니처 4.0</span> 효과로 보장성 신계약 <b>+23.6%</b>, 여성·종합·간편 상품군 신계약의 <b>82%</b> 점유</td>
+        </tr>
+        <tr>
+          <td><span class="keyword">손해율 방어</span></td>
+          <td class="eval-center"><span class="eval-focus">중점</span></td>
+          <td>자보 5사 평균 <b>88.5%</b>, <span class="keyword">8주룰</span> 도입 지연 및 차량 5부제 특약 도입</td>
+        </tr>
+        <tr>
+          <td><span class="keyword">CSM 질적 관리</span></td>
+          <td class="eval-center"><span class="eval-focus">중점</span></td>
+          <td>보유 CSM <b>4조 2,802억원</b>(QoQ <b>+7.7%</b>), 신계약 CSM 분기 최대 <b>3,024억원</b></td>
+        </tr>
+        <tr>
+          <td>디지털·채널</td>
+          <td class="eval-center"><span class="eval-watch">주시</span></td>
+          <td>5세대 실손 청구 전산화 참여율 <b>28%</b>, 디지털 전환 과제 재부각</td>
+        </tr>
+        <tr>
+          <td>글로벌·신성장</td>
+          <td class="eval-center"><span class="eval-hold">유지</span></td>
+          <td>리포·LGI 관련 보고 기간 내 신규 동향 미관측</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="legend">평가 기준 · <b>중점</b>: 즉시 대응 또는 단기 의사결정 필요 · <b>주시</b>: 추세 형성 중, 지속 모니터링 필요 · <b>유지</b>: 기존 방향 유효</p>
+  </div>
+
+  <div class="section">
+    <p class="section-label">III. 주요 사안별 분석</p>
+
+    <div class="case-block">
+      <p class="case-title">사안 1. <span class="keyword">5세대 실손</span> 출시 및 자동차보험 손해율 악화</p>
+
+      <p class="subsection-label">1) 시장 관찰</p>
+      <ul class="observation-list">
+        <li><b>2026-05-06</b> 5세대 실손 16개사 동시 판매 개시, 4세대 신규 종료. 임신·출산 280일 전 가입 시 급여 보장 신설, 발달장애 태아 가입 시 18세까지 보장 신설. 보험료 최대 <b>50%</b> 인하 [뱅크샐러드·aboda]</li>
+        <li>대형 5사 4월 자보 평균 손해율 <b>88.5%</b> (YoY <b>+6.7%p</b>), 1~2월 누계 <b>87.42%</b> [서울신문·CEOSCOREDAILY]</li>
+        <li>5사 자보 1분기 <b>461억원</b> 적자 전환, 합산 순익 1조7천억원대 (YoY <b>-10%대</b>) [뉴스핌]</li>
+        <li>경상환자 <span class="keyword">8주룰</span> 도입 지연 및 원점 재검토 가능성. <b>5월</b> 차량 5부제 할인 특약 시행 [인베스트조선]</li>
+      </ul>
+
+      <p class="subsection-label">2) 해석</p>
+      <p class="interp-text">
+        5세대 실손 출시는 단기적으로 4세대 신규 매출 공백을 유발하나, 중기적으로는 임신·출산 급여 보장 신설이 <span class="keyword">시그니처 4.0</span> 임신지원금 특약과 보장 영역 중첩되어 동시 가입 설계 시 여성·임신·출산 세그먼트 차별화 가능. 자동차보험 손해율은 본사 1분기 보험손익 <b>-41%</b> 부진의 핵심 요인으로 작용, <span class="keyword">8주룰</span> 지연 및 5부제 특약으로 하반기 추가 악화 가능성 존재.
+      </p>
+
+      <p class="subsection-label">3) 제언</p>
+      <table class="report-table">
+        <thead>
+          <tr>
+            <th class="col-rec">권고</th>
+            <th class="col-bg">배경</th>
+            <th class="col-owner">주관 부서(안)</th>
+            <th class="col-deadline">일정(안)</th>
+            <th class="col-kpi">평가지표(안)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>4세대 보유고객 대상 5세대 전환 캠페인 1차 추진</b></td>
+            <td>11월 갈아타기 할인 도입 전 선점 효과</td>
+            <td>마케팅·장기보험영업</td>
+            <td><span class="deadline">06.15</span></td>
+            <td>전환 응답률 <b>5%</b> 이상</td>
+          </tr>
+          <tr>
+            <td><b>자동차보험 손해율 90% 시나리오 대응안 수립</b></td>
+            <td>8주룰 미시행 및 폭우 시즌 중첩 대비</td>
+            <td>CRO·자보팀</td>
+            <td><span class="deadline">06.30</span></td>
+            <td>보상·요율 액션 <b>3건</b> 확정</td>
+          </tr>
+          <tr>
+            <td><b>시그니처 4.0 헬스케어 외부 제휴 1건 추가 추진</b></td>
+            <td>여성보험 모멘텀 유지 및 웰니스 확장</td>
+            <td>상품개발1파트·제휴팀</td>
+            <td><span class="deadline">07.31</span></td>
+            <td>여성헬스 MOU <b>1건</b> 이상</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label">IV. 추세 관찰 사항</p>
+    <div class="trend-block">
+      <p class="trend-label trend-recur">반복 관측</p>
+      <p>자동차보험 손해율 악화 — 직전 <b>4주 연속</b> 관측. 자동차보험 사업구조 전략 재검토 단계로 판단됨</p>
+      <p class="trend-label trend-new">신규 관측</p>
+      <p><b>5세대 실손</b> 정식 출시 · <b>8주룰</b> 도입 지연 · 차량 5부제 할인 특약 시행</p>
+      <p class="trend-label trend-strong">강도 확대</p>
+      <p>본사 <span class="keyword">CSM</span> 분기 최대 갱신 — 여성보험 라인업 모멘텀 강도 상승, 후속 분기 지속 가능성 확인 필요</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label">V. 추가 검토 의견</p>
+    <p class="opinion-box">
+      <span class="keyword">5세대 실손</span>의 임신·출산 급여 보장 신설과 <span class="keyword">시그니처 4.0</span> 임신지원금 특약 보장 영역 중첩은, 한화손보가 양 상품의 동시 가입 설계를 통해 여성·임신·출산 세그먼트에서 차별화된 시장 제안을 시도할 여지가 있는 것으로 볼 수 있음. 추가 확인 사항은 (1) 5세대 출시 후 <b>1개월</b>간 16개사 판매 실적, (2) 동시 판매 캠페인 가능 여부 및 컴플라이언스 검토, (3) 임신·출산 세그먼트 신규 유입 트래픽임.
+    </p>
+  </div>
+
+  <div class="bottom-row">
+    <div>
+      <p class="section-label">VI. 본 보고서의 한계</p>
+      <ul>
+        <li>경쟁 5사 5세대 실손 개별 상품 설계 정보 부족</li>
+        <li>본사 4세대 보유고객 세대별 분포 데이터 미반영</li>
+        <li><span class="keyword">8주룰</span> 최종 시행 시점·형태 미확정</li>
+      </ul>
+    </div>
+    <div>
+      <p class="section-label">VII. 주요 출처</p>
+      <ol>
+        <li>이데일리·헤럴드경제·다자비, 한화손보 1Q 실적 (2026-05-12)</li>
+        <li>뉴스핌, 5대 손보사 자보 적자 및 8주룰 (2026-05-18)</li>
+        <li>인베스트조선, 차량 5부제 특약 도입 (2026-05-07)</li>
+        <li>aboda·뱅크샐러드, 5세대 실손 출시 (2026-05-06)</li>
+        <li>금융위, 보험업법 시행령 입법예고 (2026-01-15)</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="footer">
+    대외비 · 한화손해보험 전략기획 내부 자료
+  </div>
+
+</div>
+</body>
+</html>
